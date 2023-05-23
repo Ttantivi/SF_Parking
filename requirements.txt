@@ -1,0 +1,6 @@
+geopandas
+numpy
+pandas
+plotly
+shapely=2.0.1
+seaborn
