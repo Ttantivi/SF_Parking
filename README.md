@@ -36,7 +36,7 @@ The last two datasets we incorporated into our analysis parking meter locations 
 
 ## Why This Was an Impossible Problem to Solve With Machine Learning
 When constructing our preliminary statistical model, we chose the Poisson regression. We concluded that it was the most appropriate as we were trying to approximate the rate of tickets at each location, given a time parameter, over a duration of time. However, the downside of this model is that we still could not solve the problem of not having the denominator in the following equation:
-![Eq1](./Images/nba_logo_small.png)
+![Eq1](./Images/Eq1.png)
 
 Before fitting the model, we defined a training and testing split. Training the model on January 2022 and testing it on February data. The specific model that we ultimately decided to move forward with was from CatBoostRegressor package with the Poisson objective. So given the features of longitudinal coordinates of a street section, citation type, and lag variables (of two weeks), it would predict the number of citations that would occur by street section on each day in our test set. Ultimately giving us the result of: R2 = 0.237 and the RMSE of 0.28.
 
