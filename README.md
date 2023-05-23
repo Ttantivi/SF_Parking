@@ -49,4 +49,4 @@ Before delving into data sources and determining the necessary information for e
 
 ![Notation](./Images/Notation.png)
 
-asdf
+Where *W* is the set containing the days of the week. *S* is the set containing the segment ID of all unique street segments in San Francisco. *T* is the start time bin incremented by 15 minute intervals containing all times when parking meters are enforced. *E* is the event that enforcement happens and *I* is the event that someone is parking illegally.
