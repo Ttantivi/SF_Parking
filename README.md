@@ -6,21 +6,21 @@ The initial goal of our project was rigorously answer the following two question
 
 ## Noteboook Table of Contents
 
-* eda.ipynb: Combined file compiling interesting EDA from each group member for presentation.
+* [eda.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/eda.ipynb): Combined file compiling interesting EDA from each group member for presentation.
 * eda_[name].ipynb: EDA done by respective group member.
-* final_probabilities.ipynb: Calculating numerator divided by denominator.
-* initial_kernel.ipynb: Imports / Helper Functions / Global Variables. This was also used to calculate the numerator.
-* initial_poisson.ipynb: Poisson regression model that was used as baseline model. Not incorporated in final analysis.
-* meter_eda.ipynb: EDA for meter datasets.
-* meter_route_eda.ipynb: More specific meter EDA.
-* meters.ipynb: Estimating the denominator.
-* path_pred_prototype_tim: Trying to predict enforcement route. Not incorporated in final analysis.
-* preprocess.ipynb: data preprocessing for Citations and streetsweeping dataset.
-* reformat_table.ipynb: formatting table for web app.
+* [final_probabilities.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/final_probabilities.ipynb): Calculating numerator divided by denominator.
+* [initial_kernel.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/initial_kernel.ipynb): Imports / Helper Functions / Global Variables. This was also used to calculate the numerator.
+* [initial_poisson.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/initial_poisson.ipynb): Poisson regression model that was used as baseline model. Not incorporated in final analysis.
+* [meter_eda.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/meter_eda.ipynb): EDA for meter datasets.
+* [meter_route_eda.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/meter_route_eda.ipynb): More specific meter EDA.
+* [meters.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/meters.ipynb): Estimating the denominator.
+* [path_pred_prototype_tim](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/path_pred_prototype_tim.ipynb): Trying to predict enforcement route. Not incorporated in final analysis.
+* [preprocess.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/preprocess.ipynb): data preprocessing for Citations and streetsweeping dataset.
+* [reformat_table.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/reformat_table.ipynb): formatting table for web app.
 
 The analysis pipeline should follow the following order:
 
-eda files -> preprocess.ipynb -> initial_kernel.ipynb -> meters.ipynb -> final_probabilities.ipynb -> reformat_table.ipynb
+eda files -> [preprocess.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/preprocess.ipynb) -> [initial_kernel.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/initial_kernel.ipynb) -> [meters.ipynb]((https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/meters.ipynb)) -> [final_probabilities.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/final_probabilities.ipynb) -> [reformat_table.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/reformat_table.ipynb)
 
 The following sections will be outlining the exact step by steps of the analysis, and which notebooks are corresponding to each step.
 
