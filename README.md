@@ -1,4 +1,5 @@
 # SF_Parking
-This capstone project was done in collaboration with Jeffrey Kuo, Bryan Wang, and Tessa Weiss at UC Berkeley for Stat 222 Professor Thomas Bengtsson.
+This capstone project was done in collaboration with Jeffrey Kuo, Bryan Wang, and Tessa Weiss at the University of California, Berkeley for Stat 222 under the guidance of Professor Thomas Bengtsson.
 
-## What is the probability of receiving a parking ticket in San Francisco?
+## Central Goal of Project
+The central goal of this projectwas to
