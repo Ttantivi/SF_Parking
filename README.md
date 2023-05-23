@@ -37,7 +37,7 @@ The last two datasets we incorporated into our analysis parking meter locations 
 * [Meter Locations Data](https://data.sfgov.org/Transportation/Map-of-Parking-Meters/fqfu-vcqd)
 
 ## Why This Was an Impossible Problem to Solve With Machine Learning
-When constructing our preliminary statistical model, we chose the Poisson regression (this was done within initial_poisson.ipynb). We concluded that it was the most appropriate as we were trying to approximate the rate of tickets at each location, given a time parameter, over a duration of time. However, the downside of this model is that we still could not solve the problem of not having the denominator in the following equation:
+When constructing our preliminary statistical model, we chose the Poisson regression (this was done within [initial_poisson.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/initial_poisson.ipynb)). We concluded that it was the most appropriate as we were trying to approximate the rate of tickets at each location, given a time parameter, over a duration of time. However, the downside of this model is that we still could not solve the problem of not having the denominator in the following equation:
 ![Eq1](./Images/Eq1.png)
 
 Before fitting the model, we defined a training and testing split. Training the model on January 2022 and testing it on February data. The specific model that we ultimately decided to move forward with was from CatBoostRegressor package with the Poisson objective. So given the features of longitudinal coordinates of a street section, citation type, and lag variables (of two weeks), it would predict the number of citations that would occur by street section on each day in our test set. Ultimately giving us the result of: R2 = 0.237 and the RMSE of 0.28.
@@ -77,8 +77,26 @@ Finally, we joined the resulting dataset with the meter transaction dataset, rep
 
 The bottom sequence was conducted in this notebook: [meters.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/meters.ipynb).
 
-### Final Modeling Stes
+### Final Modeling Steps
 We begin by outlining to steps to calculating the following probability illustrated in Figure 2:
 ![Eq3](./Images/Eq3.png)
 
 ![numerator](./Images/numerator.png)
+
+Without loss of generality, we focus on an example where we are on a specific street segment, denoted as s, and a particular day of the week, such as Wednesday. We begin by taking each citation incident that occurred on a Wednesday within street segment s and assigning it to a fifteen-minute time bin. For example, a ticket issued at 9:02 would be allocated to the 9:00 bin, while a ticket at 9:23 would be assigned to the 9:15 bin, and so on.
+
+To obtain a single representative ticket for each time bin on Wednesdays, we record only one ticket if there were multiple citations during the same Wednesday period. This step ensures that we have an indicator of whether or not there was at least one instance of enforcement and illegal parking on a specific day. Finally, we calculate the sum of the number of tickets within each time bin and divide it by the total number of Wednesdays present in the dataset. This computation provides us with an estimate of the probability of *P(E AND I | W = Wednesday, Street = s)* for a specific time bin.
+
+This was done in [initial_kernel.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/initial_kernel.ipynb).
+
+The following figure illustrates how we calculated the denominator:
+![Eq4](./Images/Eq4.png)
+
+![numerator](./Images/denominator.png)
+
+Once again without loss of generality, we consider a single specific Wednesday, observing all time slots, for a distinct section of street s that contains multiple parking meters. For each meter we bin the transactions into 15-minute intervals. We also incorporate a 3-minute grace period to allow for the transition between one car leaving and the subsequent vehicle parking and completing payment.
+
+In instances where no transactions span a 15-minute slot, or if there are transaction gaps exceeding our 3-minute buffer, we declare the meter as unpaid during that period. We then accumulate all the intervals in which at least one meter remained unpaid on that street segment. This data is used to generate an indicator for the corresponding time slot.
+
+While not explicitly illustrated in the figure, we sum up these indicators across all Wednesdays and divide by the total count of Wednesdays within our dataset with respect to each time bin. This provides an estimate of *P(I | W = Wednesday, Street = s)*. To get the final probability, we simply perform the division with respect to *T, S, W*.
+
