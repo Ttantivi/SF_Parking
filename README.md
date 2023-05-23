@@ -87,7 +87,7 @@ Without loss of generality, we focus on an example where we are on a specific st
 
 To obtain a single representative ticket for each time bin on Wednesdays, we record only one ticket if there were multiple citations during the same Wednesday period. This step ensures that we have an indicator of whether or not there was at least one instance of enforcement and illegal parking on a specific day. Finally, we calculate the sum of the number of tickets within each time bin and divide it by the total number of Wednesdays present in the dataset. This computation provides us with an estimate of the probability of *P(E AND I | W = Wednesday, Street = s)* for a specific time bin.
 
-This was done in [initial_kernel.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/initial_kernel.ipynb).
+The calculation of the numerator was done in [initial_kernel.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/initial_kernel.ipynb).
 
 The following figure illustrates how we calculated the denominator:
 ![Eq4](./Images/Eq4.png)
@@ -98,5 +98,8 @@ Once again without loss of generality, we consider a single specific Wednesday, 
 
 In instances where no transactions span a 15-minute slot, or if there are transaction gaps exceeding our 3-minute buffer, we declare the meter as unpaid during that period. We then accumulate all the intervals in which at least one meter remained unpaid on that street segment. This data is used to generate an indicator for the corresponding time slot.
 
-While not explicitly illustrated in the figure, we sum up these indicators across all Wednesdays and divide by the total count of Wednesdays within our dataset with respect to each time bin. This provides an estimate of *P(I | W = Wednesday, Street = s)*. To get the final probability, we simply perform the division with respect to *T, S, W*.
+While not explicitly illustrated in the figure, we sum up these indicators across all Wednesdays and divide by the total count of Wednesdays within our dataset with respect to each time bin. This provides an estimate of *P(I | W = Wednesday, Street = s)*.
 
+The denominator was calculated in: [meters.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/meters.ipynb).
+
+To get the final probability, we simply perform the division with respect to *T, S, W*. Which was done within [final_probabilities.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/final_probabilities.ipynb)
