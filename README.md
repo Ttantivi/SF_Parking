@@ -29,10 +29,7 @@ The second dataset that we incorporated into our analysis is a street cleaning d
 
 The last two datasets we incorporated into our analysis parking meter locations and meter transactions. Where the meter locations dataset contained every meter in San Francisco, which we were able to correspond to street segments. Finally, the transaction dataset contained every payment corresponding to a meter in San Francisco.
 
-* [Parking Citation Data](https://data.sfgov.org/Transportation/SFMTA-Parking-Citations/ab4h-
-6ztd)
-* [Street Sweeping Data](https://data.sfgov.org/City-Infrastructure/Street-Sweeping-
-Schedule/yhqp-riqs)
-* [Meter Transactions](https://data.sfgov.org/Transportation/SFMTA-Parking-Meter-Detailed-
-Revenue- Transactions/imvp-dq3v/data)
+* [Parking Citation Data](https://data.sfgov.org/Transportation/SFMTA-Parking-Citations/ab4h-6ztd)
+* [Street Sweeping Data](https://data.sfgov.org/City-Infrastructure/Street-Sweeping-Schedule/yhqp-riqs)
+* [Meter Transactions](https://data.sfgov.org/Transportation/SFMTA-Parking-Meter-Detailed-Revenue-Transactions/imvp-dq3v/data)
 * [Meter Locations](https://data.sfgov.org/Transportation/Map-of-Parking-Meters/fqfu-vcqd)
