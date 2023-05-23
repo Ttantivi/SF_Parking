@@ -22,6 +22,8 @@ The analysis pipeline should follow the following order:
 
 eda files -> ppreprocess.ipynb -> initial_kernel.ipynb -> meters.ipynb -> final_probabilities.ipynb -> reformat_table.ipynb
 
+The following sections will be outlining the exact step by steps of the analysis, and which notebooks are corresponding to each step.
+
 ## Data
 The data are directly from [data.sfgov.org](https://datasf.org/opendata/) where every citation’s information is uploaded in tabular form daily starting from 2008. Giving us the time, location (longitudinal), address, violation type, etc. We downloaded it directly as a .csv before importing it onto Python for our data wrangling. We first had to wrangle our data into data types that we could work into our geospatial and temporal analysis. To make the analysis more manageable, we filtered the data to only January 2022 to February 2023 and just meter violations.
 
@@ -55,4 +57,7 @@ Where *W* is the set containing the days of the week. *S* is the set containing 
 Suppose we are at time t, on street segment s, on weekday w. Then we want to know the probability that we get a ticket given that we parked illegally. We denote this as the following:
 
 ![Eq2](./Images/Eq2.png)
-asdf
+
+Then applying the conditional probability formula, we get line two. This is ultimately the form we are trying to calculate. We can now construct estimates of the numerator and denominator from the data.
+
+### Preparing Data for Analysis
