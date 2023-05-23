@@ -45,8 +45,14 @@ It became evident that the Poisson Regression model reached a dead end due to th
 This realization prompted us to reconsider the probabilities we were trying to calculate and instead define a proxy probability that could be calculated. Before introducing this proxy, we made certain modeling assumptions. We assumed that if a car is committing an infraction and a parking enforcement officer is on the street, then the car is guaranteed to receive a ticket. Additionally, we assumed that all parking spots are consistently occupied. Under these assumptions, our focus shifted from the number of cars committing infractions to the mere presence of an infraction. Therefore, our goal became predicting the probability of enforcement officers being present on a given street section.
 
 ## Final Model
+### Notation
 Before delving into data sources and determining the necessary information for estimating probabilities, let us establish some notation and frame the problem at hand. We have defined the following variables:
 
 ![Notation](./Images/Notation.png)
 
 Where *W* is the set containing the days of the week. *S* is the set containing the segment ID of all unique street segments in San Francisco. *T* is the start time bin incremented by 15 minute intervals containing all times when parking meters are enforced. *E* is the event that enforcement happens and *I* is the event that someone is parking illegally.
+
+Suppose we are at time t, on street segment s, on weekday w. Then we want to know the probability that we get a ticket given that we parked illegally. We denote this as the following:
+
+![Eq2](./Images/Eq2.png)
+asdf
