@@ -4,7 +4,7 @@ This capstone project was done in collaboration with Jeffrey Kuo, Bryan Wang, an
 ## Central Goal and Project Introduction
 The initial goal of our project was rigorously answer the following two questions about San Francisco (SF) parking citations. The first being: what is the probability of receiving a parking ticket given a time and place in San Francisco given that the individual is committing an infraction? The second being: are these citations being given out fairly? Or to put it into other terms, would one be less likely to receive a parking ticket if they are parked in a wealthier neighborhood? This readme will go over how these questions were answered.
 
-### End Reseult Preview
+### End Result Preview
 We conclude the project via an application for San Francisco residents to view probabilities on an interactive map of the city grid.
 
 ![App](./Images/app.png)
