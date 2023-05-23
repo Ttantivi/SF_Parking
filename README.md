@@ -20,7 +20,7 @@ The initial goal of our project was rigorously answer the following two question
 
 The analysis pipeline should follow the following order:
 
-eda files -> [preprocess.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/preprocess.ipynb) -> [initial_kernel.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/initial_kernel.ipynb) -> [meters.ipynb]((https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/meters.ipynb)) -> [final_probabilities.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/final_probabilities.ipynb) -> [reformat_table.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/reformat_table.ipynb)
+eda files -> [preprocess.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/preprocess.ipynb) -> [initial_kernel.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/initial_kernel.ipynb) -> [meters.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/meters.ipynb) -> [final_probabilities.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/final_probabilities.ipynb) -> [reformat_table.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/reformat_table.ipynb)
 
 The following sections will be outlining the exact step by steps of the analysis, and which notebooks are corresponding to each step.
 
@@ -103,3 +103,32 @@ While not explicitly illustrated in the figure, we sum up these indicators acros
 The denominator was calculated in: [meters.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/meters.ipynb).
 
 To get the final probability, we simply perform the division with respect to *T, S, W*. Which was done within [final_probabilities.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/final_probabilities.ipynb)
+
+## Application of Our Analysis
+### The Application
+To make our probabilities more concrete and applicable for San Francisco's residents, we designed an interactive web application illustrated in Figure 4. This tool allows users to select a specific time, day of the week, and desired parking duration, ranging from 15 minutes to 2 hours. It then displays the probability of receiving a parking ticket for each street segment in real-time. A color gradient is used for visual clarity, with more intense red indicating a higher ticket probability.
+
+By hovering over a street, users can view the exact probability of receiving a ticket within a fifteen-minute interval. Additionally, clicking on a street segment triggers a displays a plot with time on the X-axis and the expected cost in dollars on the Y-axis. This feature allows users to visualize the expected cost of illegal parking on a specific street segment for a given duration, and compare this with the cost of paying for the meter.
+
+![App](./Images/app.png)
+
+To calculate the probability multiple time intervals, we treat each interval as an independent Bernoulli and use the following equation:
+
+![Eq5](./Images/Eq5.png)
+
+### Limitations of Our Model
+To manage the complexity of this application, we made a few modeling assumptions. First, we treated the average cost per hour for all meters, $3.50, as a constant across all meters and time intervals. In reality, this is not accurate as meter prices in San Francisco are dynamically adjusted in response to demand. Secondly, we assumed the average cost of a parking violation, $93.50, to be the standard for all tickets. However, the actual cost varies between downtown and non-downtown locations. Lastly, our model presumes that these parking spots are occupied at all times. Therefore, our model tends to be more accurate for busy areas near major points of interest, but less so for less trafficked locations. It's important to keep these assumptions in mind when interpreting the outputs of our web application.
+
+## Further Work
+As previously noted, our assumption that metered spots are consistently occupied is only accurate in certain areas. This means that in many cases, our model may underestimate the real probability of receiving a parking ticket. Acquiring data that could help refine this assumption would require on-the-ground presence in San Francisco, which was not feasible for us during the semester. However, future improvements could be made through methods like conducting surveys to gather actual infraction rates, or installing parking sensors at a sample of metered spots. 
+
+Returning to the question of equity, our estimated probabilities could serve as a tool for assessing whether ticketing is conducted fairly across the city. To further probe this issue, we could conduct an ANOVA across different neighborhoods. This would enable us to determine if certain parts of the city are disproportionately ticketed relative to factors like the size of the area, number of meters, and other relevant parameters. Such an analysis could provide valuable insights into the equitable distribution of parking enforcement, potentially highlighting areas for improvement in the city's ticketing policy.
+
+## References
+1. Ning Jia (2022): [What are the odds of getting a parking ticket in Toronto?](https://towardsdatascience.com/what-are-the-odds-of-getting-a-parking-ticket-in-toronto-1f090dd0c608)
+2. Song Gao, Mingxiao Li, Yunlei Liang, Joseph Marks, Yuhao Kang & Moying Li (2019): Predicting the spatiotemporal legality of on-street parking using open data and machine learning, Annals of GIS, DOI: 10.1080/19475683.2019.1679882
+3. **Parking Citation Data:** [https://data.sfgov.org/Transportation/SFMTA-Parking-Citations/ab4h-6ztd](https://data.sfgov.org/Transportation/SFMTA-Parking-Citations/ab4h-6ztd)
+4. **Street Sweeping Data:** [https://data.sfgov.org/City-Infrastructure/Street-Sweeping-Schedule/yhqp-riqs](https://data.sfgov.org/City-Infrastructure/Street-Sweeping-Schedule/yhqp-riqs)
+5. **Census geocoder:** [https://geocoding.geo.census.gov/geocoder/](https://geocoding.geo.census.gov/geocoder/)
+6. **Meter Transactions:** [https://data.sfgov.org/Transportation/SFMTA-Parking-Meter-Detailed-Revenue-Transactions/imvp-dq3v/data](https://data.sfgov.org/Transportation/SFMTA-Parking-Meter-Detailed-Revenue-Transactions/imvp-dq3v/data)
+7. **Meter Locations:** [https://data.sfgov.org/Transportation/Map-of-Parking-Meters/fqfu-vcqd](https://data.sfgov.org/Transportation/Map-of-Parking-Meters/fqfu-vcqd)
