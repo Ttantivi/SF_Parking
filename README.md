@@ -24,7 +24,7 @@ eda files -> preprocess.ipynb -> initial_kernel.ipynb -> meters.ipynb -> final_p
 
 The following sections will be outlining the exact step by steps of the analysis, and which notebooks are corresponding to each step.
 
-## Data
+## Data Description
 The data are directly from [data.sfgov.org](https://datasf.org/opendata/) where every citation’s information is uploaded in tabular form daily starting from 2008. Giving us the time, location (longitudinal), address, violation type, etc. We downloaded it directly as a .csv before importing it onto Python for our data wrangling. We first had to wrangle our data into data types that we could work into our geospatial and temporal analysis. To make the analysis more manageable, we filtered the data to only January 2022 to February 2023 and just meter violations.
 
 The second dataset that we incorporated into our analysis is a street cleaning dataset. This dataset is also in a tabular csv, giving us the schedule of street cleaning corresponding to each street. Most importantly, it included the endpoints of each street segment. Where street segment is defined as one side of a block, that is intersected at each end by two or more cross streets. This dataset gives us the added granularity of not just looking at entire streets, which is an issue as there is heterogeneity in the length of streets. I.e., the number of tickets given on a street that is 5 miles long is not a direct comparison to one that is 200 feet long. Furthermore, since we are given two endpoints, we can directly calculate the distance of each street segment, something we were unable to do before with the original data.
@@ -74,3 +74,11 @@ We acquired the meter location dataset from the SFMTA, represented by the red ta
 Finally, we joined the resulting dataset with the meter transaction dataset, represented by the yellow tables. This combination enabled us to obtain all transactional data associated with each meter located on each street segment. By completing these steps, we obtained the final tables necessary to estimate the denominator for our probability calculation.
 
 ![Pipeline](./Images/pipeline.png)
+
+The bottom sequence was conducted in this notebook: [meters.ipynb](https://github.com/Ttantivi/SF_Parking/blob/main/Notebooks/meters.ipynb).
+
+### Final Modeling Stes
+We begin by outlining to steps to calculating the following probability illustrated in Figure 2:
+![Eq3](./Images/Eq3.png)
+
+![numerator](./Images/numerator.png)
