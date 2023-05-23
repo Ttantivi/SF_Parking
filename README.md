@@ -46,3 +46,7 @@ This realization prompted us to reconsider the probabilities we were trying to c
 
 ## Final Model
 Before delving into data sources and determining the necessary information for estimating probabilities, let us establish some notation and frame the problem at hand. We have defined the following variables:
+
+![Notation](./Images/Notation.png)
+
+asdf
